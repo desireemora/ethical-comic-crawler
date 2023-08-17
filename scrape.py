@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 from robotexclusionrulesparser import RobotFileParserLookalike as RobotParser
+from constants import BASE_SEARCH_URL, BASE_PUBID, BASE_PUBRNG, PUBLISHER
 
 BASE_URL = 'https://www.mycomicshop.com/search?TID=25730429'
 
@@ -47,5 +48,30 @@ def scrape_mycomicshop():
     # for index, title in enumerate(comic_titles, 1):
     #     print(f"{index}. {title.text.strip()}")
 
+
+#URL Builder based off of search criteria
+def url_builder(title, publisher):
+    #URL Example with search criteria
+    #https://www.mycomicshop.com/search?q=wicked+and+the+divine&pubid=9661&PubRng=2000-2023
+    url = BASE_SEARCH_URL
+    
+    title_fragments = title.split();
+
+    #appending title to base search string url
+    for index,value in enumerate(title_fragments):
+        if index != len(title_fragments)-1:
+            url += value + '+'
+        else:
+            url += value
+    
+    #appending publisher name to search url
+    url += BASE_PUBID + publisher
+    
+    #appending date range to search url (user input not yet supported)
+    url += BASE_PUBRNG
+
+    return url
+
 if __name__ == '__main__':
-    scrape_mycomicshop()
+    print(url_builder('wicked and the divine', PUBLISHER['image']))
+    #scrape_mycomicshop()
