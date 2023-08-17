@@ -33,9 +33,19 @@ def scrape_mycomicshop():
     # Assuming the comic titles are in an 'h2' tag (this might change depending on the website's structure)
     #comic_titles = soup.find_all('li', class_='issue').find('div',class_='title') # This class might need adjustment based on the site's structure
     comic_titles = soup.select('li.issue div.title')
+    comic_issues = soup.select('li.issue')
 
-    for index, title in enumerate(comic_titles, 1):
-        print(f"{index}. {title.text.strip()}")
+    for issue in comic_issues:
+        title = issue.find('div', class_ ='title')
+        publisher_date = issue.find('div', class_='othercolright')
+
+        if title and publisher_date:
+            print("Title:", title.text.strip())
+            print("Publisher & Date:", publisher_date.text.rstrip().replace('Published',''))
+            print("-" * 50)
+
+    # for index, title in enumerate(comic_titles, 1):
+    #     print(f"{index}. {title.text.strip()}")
 
 if __name__ == '__main__':
     scrape_mycomicshop()
