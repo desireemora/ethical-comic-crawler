@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 from robotexclusionrulesparser import RobotFileParserLookalike as RobotParser
-from constants import BASE_SEARCH_URL, BASE_PUBID, BASE_PUBRNG, PUBLISHER
+from constants import BASE_SEARCH_URL, BASE_PUBID, BASE_PUBRNG, PUBLISHER, PUBRNG
 
 BASE_URL = 'https://www.mycomicshop.com/search?TID=25730429'
 
@@ -50,7 +50,7 @@ def scrape_mycomicshop():
 
 
 #URL Builder based off of search criteria
-def url_builder(title, publisher):
+def url_builder(title, issue_num=None, publisher=None, published=None):
     #URL Example with search criteria
     #https://www.mycomicshop.com/search?q=wicked+and+the+divine&pubid=9661&PubRng=2000-2023
     url = BASE_SEARCH_URL
@@ -64,14 +64,27 @@ def url_builder(title, publisher):
         else:
             url += value
     
+    #appending issue number
+    if issue_num != None:
+        url += '+' + str(issue_num)
+
     #appending publisher name to search url
-    url += BASE_PUBID + publisher
-    
+    if publisher != None:
+        url += BASE_PUBID + publisher
+    else:
+        url += BASE_PUBID
+
     #appending date range to search url (user input not yet supported)
-    url += BASE_PUBRNG
+    if published != None:
+        url += BASE_PUBRNG + published
+    else:
+        url += BASE_PUBRNG
 
     return url
 
 if __name__ == '__main__':
-    print(url_builder('wicked and the divine', PUBLISHER['image']))
+    print(url_builder(title='wicked and the divine',issue_num=1, publisher=PUBLISHER['image'], published=PUBRNG['2000-2023']))
+    print(url_builder(title='wicked and the divine', publisher=PUBLISHER['image']))
+    print(url_builder(title='wicked and the divine',issue_num=16))
+
     #scrape_mycomicshop()
