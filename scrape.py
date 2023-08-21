@@ -79,12 +79,16 @@ def return_issues(soup):
     comic_issues = soup.select('li.issue')
 
     for issue in comic_issues:
-        title = issue.find('div', class_ ='title')
-        publisher_date = issue.find('div', class_='othercolright')
+        title = issue.find('div', class_ ='title').text
+        publisher_date = issue.find('div', class_='othercolright').text.rstrip('\n').replace('Published','').split('by')
+        date = publisher_date[0].rstrip('\n').strip()
+        publisher = publisher_date[1].strip().replace('.','')
 
         if title and publisher_date:
-            print("Title:", title.text.strip())
-            print("Publisher & Date:", publisher_date.text.rstrip().replace('Published',''))
+            print(publisher_date)
+            print("Title:", title)
+            print("Publisher:", publisher)
+            print('Date:',date)
             print("-" * 50)
 
     for index, title in enumerate(comic_titles, 1):
