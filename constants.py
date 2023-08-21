@@ -57,3 +57,9 @@ PUBRNG = {
     "1946-1950": "1946-1950",
     "1940-1945": "1941-1945"
 }
+
+DISPLAY = {
+    "titlelist": "Grouped by Title",
+    "issuelist": "Issue list",
+    "issuegallery": "Cover gallery"
+}
