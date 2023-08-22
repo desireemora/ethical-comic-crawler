@@ -78,27 +78,29 @@ def return_issues(soup):
     comic_titles = soup.select('li.issue div.title')
     comic_issues = soup.select('li.issue')
 
-    for issue in comic_issues:
+    for index, issue in enumerate(comic_issues, 1):
         title = issue.find('div', class_ ='title').text
         publisher_date = issue.find('div', class_='othercolright').text.rstrip('\n').replace('Published','').split('by')
         date = publisher_date[0].rstrip('\n').strip()
         publisher = publisher_date[1].strip().replace('.','')
 
         if title and publisher_date:
-            print(publisher_date)
-            print("Title:", title)
-            print("Publisher:", publisher)
-            print('Date:',date)
+            print(f"{index}. {title} {publisher} {date}")
+            # print("Title: " + title)
+            # print("Publisher: "+ publisher)
+            # print('Date: '+ date)
             print("-" * 50)
 
     for index, title in enumerate(comic_titles, 1):
         print(f"{index}. {title.text.strip()}")
 
 def return_titles(soup):
-    # Assuming the comic titles are in an 'h2' tag (this might change depending on the website's structure)
-    comic_titles = soup.select('table.results td.title a')
-    for row in comic_titles:
-        print(row)
+    # Getting a tuple of the search href of the title and the text asscoiated witht the tag
+    comic_hrefs = [(a['href'],a.text) for a in soup.select('table.results td.title a') if 'href' in a.attrs]
+    
+    for index, title in enumerate(comic_hrefs, 1):
+        print(f"{index}. Link: https://www.mycomicshop.com/{title[0]} Title: {title[1]}")
+
 
 def comic_page_type(html_page):
     set_displays = html_page.find('select', class_='setdisplayas', selected=True)
