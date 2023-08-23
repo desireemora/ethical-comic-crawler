@@ -14,16 +14,19 @@ class Issue:
     """
     
     def __init__(self, title, issue_num, date, publisher):
-        """
-        Initializes an Issue with its attributes.
-        
-        """
+        """ Initializes an Issue with its attributes."""
 
         self.title = title
         self.issue_num = issue_num
         self.date = date
         self.publisher = publisher
+    
 
+    def __repr__(self):
+        """ String representation of the object. """
+
+        return f'{{"title":"{self.title}","issueNumber":{self.issue_num}, "date":"{self.date}", "publisher":"{self.publisher}"}}'
+    
 
     def isVariant(self):
         """

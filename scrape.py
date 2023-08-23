@@ -1,5 +1,6 @@
 import requests
 import difflib
+from issue import Issue
 from bs4 import BeautifulSoup
 from robotexclusionrulesparser import RobotFileParserLookalike as RobotParser
 from constants import BASE_SEARCH_URL, BASE_PUBID, BASE_PUBRNG, PUBLISHER, PUBRNG, DISPLAY
@@ -75,6 +76,7 @@ def url_builder(title, issue_num=None, publisher=None, published=None):
     return url
 
 def return_issues(soup):
+    issues = []
     comic_titles = soup.select('li.issue div.title')
     comic_issues = soup.select('li.issue')
 
@@ -88,12 +90,14 @@ def return_issues(soup):
         publisher = publisher_date[1].strip().replace('.','')
 
         if title and publisher_date:
-            print(f"{index}. {title} #{issue_num} {publisher} {date}")
+            issues.append(Issue(title,issue_num,date,publisher))
+            #print(f"{index}. {title} #{issue_num} {publisher} {date}")
             # print("Title: " + title)
             # print("Publisher: "+ publisher)
             # print('Date: '+ date)
             print("-" * 50)
-
+    print(str(issues))
+    
     for index, title in enumerate(comic_titles, 1):
         print(f"{index}. {title.text.strip()}")
 
