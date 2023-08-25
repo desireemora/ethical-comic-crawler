@@ -1,6 +1,6 @@
 import requests
 import difflib
-from issue import Issue
+from comicissue import ComicIssue
 from bs4 import BeautifulSoup
 from robotexclusionrulesparser import RobotFileParserLookalike as RobotParser
 from constants import BASE_SEARCH_URL, BASE_PUBID, BASE_PUBRNG, PUBLISHER, PUBRNG, DISPLAY
@@ -90,7 +90,7 @@ def return_issues(soup):
         publisher = publisher_date[1].strip().replace('.','')
 
         if title and publisher_date:
-            issues.append(Issue(title,issue_num,date,publisher))
+            issues.append(ComicIssue(title,issue_num,date,publisher))
             #print(f"{index}. {title} #{issue_num} {publisher} {date}")
             # print("Title: " + title)
             # print("Publisher: "+ publisher)

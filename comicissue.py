@@ -1,4 +1,4 @@
-class Issue:
+class ComicIssue:
     """
     Represents a comic issue.
     
