@@ -11,7 +11,7 @@ Using `robotexclusionrulesparser`, I ensure compliance with all the rules define
 
 If you are the owner of [`https://www.mycomicshop.com`](https://www.mycomicshop.com) and this code or the (future) API causes any inconvenience, please contact me, and I will promptly address it.
 
-### Thank you!
+###  Thank you!
 
 # Instructions
 
