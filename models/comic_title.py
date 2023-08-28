@@ -28,7 +28,7 @@ class ComicTitle:
     def __repr__(self):
         """ String representation of the object. """
 
-        return f'{{"title":"{self.title}","first_issue": "{self.first_issue}", "last_issue":"{self.isslast_issuee_num}", "date":"{self.date}", "publisher":"{self.publisher}"}}'
+        return f'{{"title":"{self.title}","first_issue": "{self.first_issue}", "last_issue":"{self.last_issue}", "date":"{self.date}", "publisher":"{self.publisher}"}}'
     
 
     def is_tpb(self):
