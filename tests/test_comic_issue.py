@@ -1,8 +1,8 @@
-# test_issue.py
+# tests/test_comcic_ issue.py
 
 import unittest
 
-from comicissue import ComicIssue
+from models.comic_issue import ComicIssue
 
 class TestIssue(unittest.TestCase):
     

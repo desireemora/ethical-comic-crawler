@@ -23,4 +23,5 @@ If you are the owner of [`https://www.mycomicshop.com`](https://www.mycomicshop.
 `python scrape.py`
 
 ### Tests
-`python -m unittest test_issue.py`
+`python -m unittest test_comic_issue.py`
+`python -m unittest test_comic_title.py`
