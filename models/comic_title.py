@@ -16,7 +16,7 @@ class ComicTitle:
     """
     
     def __init__(self, title, first_issue, last_issue, date, publisher):
-        """ Initializes an Issue with its attributes."""
+        """ Initializes an comic title with its attributes."""
 
         self.title = title
         self.first_issue = first_issue
@@ -28,7 +28,7 @@ class ComicTitle:
     def __repr__(self):
         """ String representation of the object. """
 
-        return f'{{"title":"{self.title}","first_issue": "{first_issue}", "last_issue":"{self.isslast_issuee_num}", "date":"{self.date}", "publisher":"{self.publisher}"}}'
+        return f'{{"title":"{self.title}","first_issue": "{self.first_issue}", "last_issue":"{self.isslast_issuee_num}", "date":"{self.date}", "publisher":"{self.publisher}"}}'
     
 
     def is_tpb(self):
