@@ -10,7 +10,8 @@ class ComicTitle:
     - publisher (str): The publisher who published the comic.
 
     Functions:
-    - isVariant
+    - is_tpb
+    - is_oneshot
 
     """
     
