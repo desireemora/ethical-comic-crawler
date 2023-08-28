@@ -51,27 +51,27 @@ class ComicTitle:
         else:
             return False
 
-def is_oneshot(self):
-        """
-        Checks if a comic is a oneshot.
-        A oneshot is usually a special and contains a slightly different than the running series title and is usually an issue labeled #0 or #1.
-        
-        Example: 
-            title = Wicked and the Divine (2014); first_issue = #1; last_issue= #45 - regular running series.
-            title = Wicked and the Divine Funnies (2018 Image); first_issue = #1; last_issue= None - Does not dontain 'TBP' and only has 1 issue. This is a one-shot.
-            title = Wicked and the Divine TPB (2014-2019 Image); first_issue = #1; last_issue= #9 - This is a TPB.
+    def is_oneshot(self):
+            """
+            Checks if a comic is a oneshot.
+            A oneshot is usually a special and contains a slightly different than the running series title and is usually an issue labeled #0 or #1.
+            
+            Example: 
+                title = Wicked and the Divine (2014); first_issue = #1; last_issue= #45 - regular running series.
+                title = Wicked and the Divine Funnies (2018 Image); first_issue = #1; last_issue= None - Does not dontain 'TBP' and only has 1 issue. This is a one-shot.
+                title = Wicked and the Divine TPB (2014-2019 Image); first_issue = #1; last_issue= #9 - This is a TPB.
 
-        Parameters:
-            Self is the only parameter. This function will check the comcic title, and last_issue of the object. 
+            Parameters:
+                Self is the only parameter. This function will check the comcic title, and last_issue of the object. 
 
-        Returns:
-            bool: True if the comic series is the trade paper back (TPB).
-        """
+            Returns:
+                bool: True if the comic series is the trade paper back (TPB).
+            """
 
-        if 'TPB' in self.title:
-            return False
-        elif self.last_issue is None:
-            return True
-        else:
-            return False
+            if 'TPB' in self.title:
+                return False
+            elif self.last_issue is None:
+                return True
+            else:
+                return False
 
