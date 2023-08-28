@@ -1,6 +1,6 @@
 import requests
 import difflib
-from comicissue import ComicIssue
+from models.comic_issue import ComicIssue
 from bs4 import BeautifulSoup
 from robotexclusionrulesparser import RobotFileParserLookalike as RobotParser
 from constants import BASE_SEARCH_URL, BASE_PUBID, BASE_PUBRNG, PUBLISHER, PUBRNG, DISPLAY
