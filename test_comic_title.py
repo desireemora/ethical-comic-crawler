@@ -18,3 +18,11 @@ class TestComicTitle (unittest.TestCase):
         """Testing that non trade paper backs comics returns false"""
         self.assertEqual(self.comic.is_tpb(), False)
         self.assertEqual(self.comic_one_shot.is_tpb(), False)
+    
+    def test_is_oneshot(self):
+        """Testing that oneshot comics return true"""
+        self.assertEqual(self.comic_one_shot.is_oneshot(), True)
+
+        """Testing that non oneshots returns false"""
+        self.assertEqual(self.comic.is_oneshot(), False)
+        self.assertEqual(self.comic_tpb.is_oneshot(), False)
