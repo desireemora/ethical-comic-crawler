@@ -1,6 +1,7 @@
 import requests
 import difflib
 from models.comic_issue import ComicIssue
+from models.comic_title_link import ComicTitleLink
 from bs4 import BeautifulSoup
 from robotexclusionrulesparser import RobotFileParserLookalike as RobotParser
 from constants import BASE_SEARCH_URL, BASE_PUBID, BASE_PUBRNG, PUBLISHER, PUBRNG, DISPLAY
@@ -35,11 +36,11 @@ def scrape_mycomicshop(url):
     display_type = soup.find('select', class_='setdisplayas').find('option').text
 
     if display_type == DISPLAY['titlelist']:
-        return_titles(soup)
+        comics = return_titles(soup)
     elif display_type == DISPLAY['issuelist']:
-        return_issues(soup)
+        comics = return_issues(soup)
 
-    return soup
+    return comics
 
 
 #URL Builder based off of search criteria
@@ -101,13 +102,19 @@ def return_issues(soup):
     for index, title in enumerate(comic_titles, 1):
         print(f"{index}. {title.text.strip()}")
 
+    return issues
+
 def return_titles(soup):
     # Getting a tuple of the search href of the title and the text asscoiated witht the tag
     comic_hrefs = [(a['href'],a.text) for a in soup.select('table.results td.title a') if 'href' in a.attrs]
     
+    titles = []
+
     for index, title in enumerate(comic_hrefs, 1):
+        titles.append(ComicTitleLink(title[1],f"https://www.mycomicshop.com/{title[0]}"))
         print(f"{index}. Link: https://www.mycomicshop.com/{title[0]} Title: {title[1]}")
 
+    return titles
 
 def comic_page_type(html_page):
     set_displays = html_page.find('select', class_='setdisplayas', selected=True)
@@ -128,8 +135,11 @@ if __name__ == '__main__':
     print(url2)
 
 
-    scrape_mycomicshop(url)
-    scrape_mycomicshop(url2)
+    comics = scrape_mycomicshop(url)
+    comics2 = scrape_mycomicshop(url2)
+
+    print(comics)
+    print(comics2)
 
     # text1 = soup1.text
     # text2 = soup2.text

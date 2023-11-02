@@ -16,7 +16,7 @@ class ComicTitle:
     """
     
     def __init__(self, title, first_issue, last_issue, date, publisher):
-        """ Initializes an comic title with its attributes."""
+        """ Initializes a comic title with its attributes."""
 
         self.title = title
         self.first_issue = first_issue

@@ -25,7 +25,7 @@ class ComicIssue:
     def __repr__(self):
         """ String representation of the object. """
 
-        return f'{{"title":"{self.title}","issueNumber":{self.issue_num}, "date":"{self.date}", "publisher":"{self.publisher}"}}'
+        return f'{{"title":"{self.title}","issueNumber":"{self.issue_num}", "date":"{self.date}", "publisher":"{self.publisher}"}}'
     
 
     def isVariant(self):
